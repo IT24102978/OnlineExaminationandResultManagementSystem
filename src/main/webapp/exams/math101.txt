@@ -1,0 +1,51 @@
+What is not a component in computer?
+A.processor
+B.ram
+C.tv
+D.storage
+What is not an Asian country?
+A.China
+B.japan
+C.india
+D.america
+Which one is not a programming language?
+A.Python
+B.Java
+C.HTML
+D.Dog
+Which of these is not a fruit?
+A.Apple
+B.Orange
+C.Carrot
+D.Mango
+What is not an operating system?
+A.Windows
+B.Linux
+C.MacOS
+D.Excel
+Which is not a web browser?
+A.Chrome
+B.Firefox
+C.Edge
+D.Word
+Which of these is not a planet?
+A.Mars
+B.Venus
+C.Pluto
+D.Sun
+Which one is not a social media platform?
+A.Facebook
+B.Twitter
+C.Instagram
+D.Excel
+What is not used in painting?
+A.Brush
+B.Canvas
+C.Paint
+D.Keyboard
+Which one is not a type of cloud computing service?
+A.IaaS
+B.PaaS
+C.SaaS
+D.RAM
+
