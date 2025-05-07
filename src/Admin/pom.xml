@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.jetbrains</groupId>
-    <artifactId>Admin</artifactId>
+    <artifactId>AdminPannel</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>Admin</name>
+    <name>AdminPannel</name>
     <packaging>war</packaging>
 
     <properties>
@@ -38,12 +38,6 @@
             <groupId>org.glassfish.jersey.inject</groupId>
             <artifactId>jersey-cdi2-se</artifactId>
             <version>4.0.0-M1</version>
-        </dependency>
-        <dependency>
-            <groupId>jakarta.servlet</groupId>
-            <artifactId>jakarta.servlet-api</artifactId>
-            <version>5.0.0</version>
-            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jboss.weld.se</groupId>
