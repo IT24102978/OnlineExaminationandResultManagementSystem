@@ -1,0 +1,275 @@
+<%@ page import="java.util.*, com.example.oop_project.MCQ" %>
+<%
+    ArrayList<MCQ> mcqList = (ArrayList<MCQ>) session.getAttribute("mcqList");
+    if (mcqList == null) mcqList = new ArrayList<>();
+
+    int duration = (session.getAttribute("examDuration") != null)
+            ? (int) session.getAttribute("examDuration")
+            : 60; // default fallback
+%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Take Exam</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f8f6ff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .main-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .timer {
+            font-size: 22px;
+            font-weight: bold;
+            color: #e53935;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background-color: #fff;
+            padding: 30px 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 20px rgba(100, 0, 200, 0.08);
+        }
+
+        h2 {
+            color: #5c3d99;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .question-container {
+            display: none;
+            padding: 20px;
+            background-color: #faf8ff;
+            border: 1px solid #e0dff5;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .question-container.active {
+            display: block;
+        }
+
+        .question-container p {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        label {
+            display: block;
+            margin: 8px 0;
+            font-size: 15px;
+        }
+
+        .navigation-buttons,
+        .submit-section {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .navigation-buttons button,
+        .submit-section input[type="submit"] {
+            background-color: #5c3d99;
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 6px;
+            font-size: 15px;
+            cursor: pointer;
+            margin: 0 8px;
+            transition: background 0.2s ease-in-out;
+        }
+
+        .navigation-buttons button:hover,
+        .submit-section input[type="submit"]:hover {
+            background-color: #472f74;
+        }
+
+        .question-map {
+            width: 300px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            background-color: #f0effb;
+            padding: 20px;
+            border-radius: 16px;
+            margin-top: 30px;
+        }
+
+        .question-box {
+            width: 50px;
+            height: 50px;
+            background-color: #ccc;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .question-box:hover {
+            background-color: #a3a3a3;
+        }
+
+        .question-box.current {
+            border: 2px solid #5c3d99;
+        }
+
+        .question-box.answered {
+            background-color: #4caf50;
+            color: white;
+        }
+
+        [data-lucide] {
+            width: 16px;
+            height: 16px;
+            vertical-align: middle;
+            margin-right: 6px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="main-wrapper">
+    <div class="timer">
+        Time Remaining: <span id="timer">--:--</span>
+    </div>
+
+    <div class="container">
+        <h2><i data-lucide="book-open"></i> Take Your Exam</h2>
+
+        <form action="SubmitExamServlet" method="post" id="examForm">
+            <div id="questions">
+                <% for (int i = 0; i < mcqList.size(); i++) {
+                    MCQ mcq = mcqList.get(i);
+                %>
+                <div class="question-container <%= (i == 0) ? "active" : "" %>" id="question-<%= i %>">
+                    <p>Q<%= i + 1 %>: <%= mcq.getQuestion() %></p>
+                    <label><input type="radio" name="q<%= i %>" value="A" required> <%= mcq.getOptionA() %></label>
+                    <label><input type="radio" name="q<%= i %>" value="B"> <%= mcq.getOptionB() %></label>
+                    <label><input type="radio" name="q<%= i %>" value="C"> <%= mcq.getOptionC() %></label>
+                    <label><input type="radio" name="q<%= i %>" value="D"> <%= mcq.getOptionD() %></label>
+                </div>
+                <% } %>
+            </div>
+
+            <div class="navigation-buttons">
+                <button type="button" onclick="prevQuestion()"><i data-lucide="arrow-left"></i> Previous</button>
+                <button type="button" onclick="nextQuestion()">Next <i data-lucide="arrow-right"></i></button>
+            </div>
+
+            <div class="submit-section">
+                <input type="submit" value="Submit Exam">
+            </div>
+        </form>
+    </div>
+
+    <div class="question-map">
+        <% for (int i = 0; i < mcqList.size(); i++) { %>
+        <div class="question-box" id="qbox-<%= i %>" onclick="goToQuestion(<%= i %>)"><%= i + 1 %></div>
+        <% } %>
+    </div>
+</div>
+
+<!-- Scripts -->
+<script>
+    let currentQuestion = 0;
+    const totalQuestions = <%= mcqList.size() %>;
+    const examDurationMinutes = <%= duration %>;
+    let timeLeft = examDurationMinutes * 60;
+
+    function showQuestion(index) {
+        const all = document.querySelectorAll(".question-container");
+        all.forEach(q => q.classList.remove("active"));
+        if (index >= 0 && index < all.length) {
+            all[index].classList.add("active");
+            currentQuestion = index;
+        }
+
+        document.querySelectorAll(".question-box").forEach(box => box.classList.remove("current"));
+        const box = document.getElementById("qbox-" + index);
+        if (box) box.classList.add("current");
+
+        updateQuestionBoxes();
+    }
+
+    function nextQuestion() {
+        if (currentQuestion < totalQuestions - 1) showQuestion(++currentQuestion);
+    }
+
+    function prevQuestion() {
+        if (currentQuestion > 0) showQuestion(--currentQuestion);
+    }
+
+    function goToQuestion(index) {
+        showQuestion(index);
+    }
+
+    function updateQuestionBoxes() {
+        const allRadios = document.querySelectorAll("input[type=radio]");
+        const answered = new Set();
+
+        allRadios.forEach(input => {
+            if (input.checked) {
+                const index = input.name.replace("q", "");
+                const box = document.getElementById("qbox-" + index);
+                if (box) {
+                    box.classList.add("answered");
+                    answered.add(index);
+                }
+            }
+        });
+
+        for (let i = 0; i < totalQuestions; i++) {
+            if (!answered.has(i.toString())) {
+                const box = document.getElementById("qbox-" + i);
+                if (box) box.classList.remove("answered");
+            }
+        }
+    }
+
+    function startTimer() {
+        const timerDisplay = document.getElementById("timer");
+        const countdown = setInterval(() => {
+            const min = Math.floor(timeLeft / 60);
+            const sec = timeLeft % 60;
+            timerDisplay.textContent = String(min).padStart(2, '0') + ":" + String(sec).padStart(2, '0');
+            if (timeLeft <= 0) {
+                clearInterval(countdown);
+                document.getElementById("examForm").submit();
+            }
+            timeLeft--;
+        }, 1000);
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+        showQuestion(currentQuestion);
+        updateQuestionBoxes();
+        startTimer();
+
+        document.querySelectorAll("input[type=radio]").forEach(input => {
+            input.addEventListener("change", updateQuestionBoxes);
+        });
+    });
+</script>
+
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>lucide.createIcons();</script>
+
+</body>
+</html>
