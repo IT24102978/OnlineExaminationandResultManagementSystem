@@ -160,7 +160,7 @@
         <div class="col-md-4">
             <div class="card bg-primary">
                 <h3>4</h3>
-                <p>Lecturer</p>
+                <p>Admin</p>
                 <div class="card-footer">
                     <span>More info</span>
                     <i class="fas fa-arrow-right"></i>
