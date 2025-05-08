@@ -1,0 +1,5 @@
+001,Anushka Piyumal,anu@gmail.com,123
+002,Dulmi Madubashini,madu@gmail.com,234
+003,Ruwandi,ruwandi@gmail.com,345
+004,Apeksha Sewwandi, sew@gmail.com,456
+005,Loshini Tharindi, loshi@gmail.com,555
