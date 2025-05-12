@@ -7,10 +7,23 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: #f4f4f4;
+        html, body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
+        body {
+            padding-top: 50px;
+            overflow-x: hidden;
+            font-family: 'Poppins', sans-serif;
+            background: url('images/wallpaper.jpg') no-repeat center center fixed;
+            background-size: cover;
+            backdrop-filter: blur(5px);
+        }
+        .title-heading {
+            font-family: Georgia, serif;
+        }
+
         .top-bar {
             width: 100%;
             height: 50px;
@@ -58,6 +71,8 @@
             left: 0;
         }
         .container {
+            width: 100%;
+            margin: 0 auto;
             padding-top: 60px;
         }
         .dashboard-cards .card {
@@ -67,9 +82,13 @@
             border-radius: 8px;
             transition: transform 0.3s;
             position: relative;
+            margin-bottom: 25px;
         }
         .dashboard-cards .card:hover {
             transform: scale(1.05);
+        }
+        .dashboard-cards .row {
+            justify-content: center;
         }
         .card-footer {
             font-size: 16px;
@@ -100,77 +119,42 @@
         a:hover {
             color: #3498db; /* change color on hover (optional) */
         }
+
+        h1 {
+            margin-top: 0;
+        }
     </style>
 </head>
 <body>
 
 <% if (session.getAttribute("student") == null) {
-    response.sendRedirect("login.jsp");
+    response.sendRedirect("studentLogin.jsp");
     return;
 } %>
 
 <div class="top-bar">
-    <button class="menu-btn">&#9776;</button>
+    <button class="menu-btn">☰</button>
     <div class="sidebar">
         <ul>
-            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="dashboard.jsp">Dashboard</a></li>
             <li><a href="StudentController?action=getStudents">Students</a></li>
             <li><a href="#">Exams</a></li>
             <li><a href="#">Result</a></li>
             <li><a href="#">Feedbacks</a></li>
             <li><a href="#">Lecturers</a></li>
-            <li><a href="#">System Users</a></li>
+            <li><a href="index.jsp">Log out</a></li>
         </ul>
     </div>
 </div>
 <div class="container mt-4" id="main-content"><br>
-    <h2 class="text-center">Dashboard</h2>
+    <h1 class="text-center title-heading"><b>Student    Dashboard</b></h1>
+
     <br>
     <div class="row dashboard-cards mt-4">
         <div class="col-md-4">
-            <div class="card bg-warning">
+            <div class="card bg-dark">
                 <h3>1</h3>
-                <p>Department</p>
-                <div class="card-footer">
-                    <span>More info</span>
-                    <i class="fas fa-arrow-right"></i>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card bg-danger">
-                <h3>2</h3>
-                <p>Course</p>
-                <div class="card-footer">
-                    <span>More info</span>
-                    <i class="fas fa-arrow-right"></i>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card bg-success">
-                <h3>3</h3>
-                <p>Class</p>
-                <div class="card-footer">
-                    <span>More info</span>
-                    <i class="fas fa-arrow-right"></i>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card bg-primary">
-                <h3>4</h3>
-                <p>Admin</p>
-                <div class="card-footer">
-                    <span>More info</span>
-                    <i class="fas fa-arrow-right"></i>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card bg-info">
-                <h3>5</h3>
-                <p>Students</p>
+                <h4>Subjects</h4><br>
                 <div class="card-footer">
                     <span>More info</span>
                     <i class="fas fa-arrow-right"></i>
@@ -179,8 +163,29 @@
         </div>
         <div class="col-md-4">
             <div class="card bg-dark">
-                <h3>6</h3>
-                <p>System Users</p>
+                <h3>2</h3>
+                <h4>Exams</h4><br>
+                <div class="card-footer">
+                    <span>More info</span>
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card bg-dark">
+                <h3>3</h3>
+                <h4>Results</h4><br>
+                <div class="card-footer">
+                    <span>More info</span>
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card bg-dark">
+                <h3>4</h3>
+                <h4>Feedbacks</h4><br>
                 <div class="card-footer">
                     <span>More info</span>
                     <i class="fas fa-arrow-right"></i>

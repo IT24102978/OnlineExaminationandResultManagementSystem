@@ -43,7 +43,7 @@ public class StudentController extends HttpServlet {
             if (id != null && firstName != null && lastName != null && email != null && course != null && password != null) {
                 Student student = new Student(id, firstName, lastName, email, course, password);
                 studentManager.addStudent(student);
-                response.sendRedirect("login.jsp");
+                response.sendRedirect("studentLogin.jsp");
             } else {
                 response.sendRedirect("signup.jsp?error=Invalid input");
             }
@@ -57,7 +57,7 @@ public class StudentController extends HttpServlet {
                 session.setAttribute("student", student);
                 response.sendRedirect("dashboard.jsp");
             } else {
-                response.sendRedirect("login.jsp?error=Invalid ID or password");
+                response.sendRedirect("studentLogin.jsp?error=Invalid ID or password");
             }
         } else if ("update".equals(action)) {
             String id = request.getParameter("id");

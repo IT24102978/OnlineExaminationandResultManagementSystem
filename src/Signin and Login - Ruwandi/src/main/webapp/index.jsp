@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title></center>Welcome - Online Examination System</center></title>
+  <title>Welcome - Online Examination System</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
     body {
@@ -19,7 +19,7 @@
       color: #333;
     }
     .content {
-      background: rgba(192, 192, 192, 0.7); /* Silver with transparency */
+      background: rgba(192, 192, 192, 0.7);
       padding: 30px;
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -32,15 +32,19 @@
       font-weight: bold;
     }
     .btn {
-      margin: 5px;
+      margin: 8px;
+      width: 200px;
     }
   </style>
 </head>
 <body>
 <div class="content">
   <h1>Welcome to the Online Examination System</h1>
-  <p>Please choose an option to proceed:</p>
-  <a href="login.jsp" class="btn btn-primary">Login</a>
+  <p>Select your role to continue:</p>
+  <a href="adminLogin.jsp" class="btn btn-danger">Admin Login</a>
+  <a href="studentLogin.jsp" class="btn btn-primary">Student Login</a>
+  <hr>
+  <p>New student?</p>
   <a href="signup.jsp" class="btn btn-secondary">Sign Up</a>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

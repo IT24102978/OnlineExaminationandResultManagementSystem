@@ -26,7 +26,7 @@
             max-width: 450px;
             width: 100%;
         }
-        .signup-box h2 {
+        .signup-box h4 {
             text-align: center;
             font-weight: bold;
             margin-bottom: 20px;
@@ -46,7 +46,7 @@
 <body>
 <div class="container signup-container">
     <div class="signup-box">
-        <h2>Sign Up</h2>
+        <h4>Sign Up</h4>
         <% if (request.getParameter("error") != null) { %>
         <div class="alert alert-danger"><%= request.getParameter("error") %></div>
         <% } %>
