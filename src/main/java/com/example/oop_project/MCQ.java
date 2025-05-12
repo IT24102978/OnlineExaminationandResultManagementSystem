@@ -7,13 +7,15 @@ public class MCQ {
     private String optionC;
     private String optionD;
     private String userAnswer;
+    private String correctAnswer;  // ✅ New field
 
-    public MCQ(String question, String a, String b, String c, String d) {
+    public MCQ(String question, String a, String b, String c, String d, String correctAnswer) {
         this.question = question;
         this.optionA = a;
         this.optionB = b;
         this.optionC = c;
         this.optionD = d;
+        this.correctAnswer = correctAnswer;
     }
 
     public String getQuestion() {
@@ -32,9 +34,16 @@ public class MCQ {
         return optionD;
     }
     public String getUserAnswer() {
-        return userAnswer; }
-
+        return userAnswer;
+    }
     public void setUserAnswer(String userAnswer) {
         this.userAnswer = userAnswer;
+    }
+
+    public String getCorrectAnswer() {   // ✅ New getter
+        return correctAnswer;
+    }
+    public void setCorrectAnswer(String correctAnswer) {  // ✅ Optional setter
+        this.correctAnswer = correctAnswer;
     }
 }

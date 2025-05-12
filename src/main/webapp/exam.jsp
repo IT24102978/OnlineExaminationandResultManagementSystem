@@ -153,7 +153,7 @@
     <div class="container">
         <h2><i data-lucide="book-open"></i> Take Your Exam</h2>
 
-        <form action="SubmitExamServlet" method="post" id="examForm">
+        <form action="SubmitExamServlet" method="post" id="examForm" onsubmit="return confirmSubmission();">
             <div id="questions">
                 <% for (int i = 0; i < mcqList.size(); i++) {
                     MCQ mcq = mcqList.get(i);
@@ -186,7 +186,6 @@
     </div>
 </div>
 
-<!-- Scripts -->
 <script>
     let currentQuestion = 0;
     const totalQuestions = <%= mcqList.size() %>;
@@ -255,6 +254,10 @@
             }
             timeLeft--;
         }, 1000);
+    }
+
+    function confirmSubmission() {
+        return confirm("Are you sure you want to submit and get your score? You won’t be able to change your answers after this.");
     }
 
     window.addEventListener("DOMContentLoaded", () => {

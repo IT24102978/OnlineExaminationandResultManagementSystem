@@ -54,24 +54,18 @@
             color: #5c3d99;
         }
 
-        .footer {
-            margin-top: 30px;
-            text-align: center;
-            color: #999;
-        }
-
-        .back-btn {
+        .next-btn {
             display: inline-block;
-            margin-top: 20px;
             background-color: #5c3d99;
             color: white;
             text-decoration: none;
             padding: 10px 18px;
             border-radius: 6px;
             transition: background 0.2s ease-in-out;
+            margin-top: 20px;
         }
 
-        .back-btn:hover {
+        .next-btn:hover {
             background-color: #472f74;
         }
 
@@ -98,11 +92,9 @@
     </div>
     <% } %>
 
-    <div class="footer">
-        Thank you for completing your exam!
-        <br/>
-        <a href="${pageContext.request.contextPath}/showExams" class="back-btn">
-            <i data-lucide="arrow-left-circle"></i> Back to Exam List
+    <div style="text-align:center;">
+        <a href="score.jsp" class="next-btn">
+            <i data-lucide="arrow-right-circle"></i> View Your Marks
         </a>
     </div>
 </div>

@@ -1,9 +1,14 @@
 package com.example.oop_project;
 
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.*;
 
-import java.io.*;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class SubmitExamServlet extends HttpServlet {
@@ -14,53 +19,43 @@ public class SubmitExamServlet extends HttpServlet {
 
         HttpSession session = request.getSession();
 
-        // Retrieve exam data from session
+        // Retrieve exam session data
         ArrayList<MCQ> mcqList = (ArrayList<MCQ>) session.getAttribute("mcqList");
         String examId = (String) session.getAttribute("examId");
         String studentId = (String) session.getAttribute("studentId");
 
-        // Validate
         if (mcqList == null || examId == null || studentId == null) {
             response.getWriter().println("Session expired or missing data.");
             return;
         }
 
-        // Record user answers
+        // Collect student's selected answers
         for (int i = 0; i < mcqList.size(); i++) {
             String answer = request.getParameter("q" + i);
             mcqList.get(i).setUserAnswer(answer);
         }
 
-        // File path to save answers
-        String folderPath = "C:/Users/VICTUS/Documents/ExamSystem/StudentAnswer/";
-        String fileName = studentId + "_" + examId + "_answers";
-        String filePath = folderPath + fileName;
-
-        // Ensure folder exists
-        File folder = new File(folderPath);
-        if (!folder.exists()) {
-            folder.mkdirs();
-        }
-
-        // Save answers to file
+        // Calculate score using MCQService
         MCQService service = new MCQService();
-        service.saveUserAnswers(mcqList, filePath);
+        int score = service.calculateScore(mcqList);
 
-        System.out.println("✅ Answer file saved at: " + filePath);
+        // Save the score to a file
+        service.saveUserScore(studentId, examId, score, mcqList.size());
 
-        // ✅ Create submission marker
+        // Create submission marker file
         String submissionMarkerPath = "C:/Users/VICTUS/Documents/ExamSystem/Submissions/";
         File submissionFolder = new File(submissionMarkerPath);
         if (!submissionFolder.exists()) {
             submissionFolder.mkdirs();
         }
 
-        // ❗ FIXED: Don't add ".txt" again — examId already includes it
         File marker = new File(submissionMarkerPath + studentId + "_" + examId);
-        marker.createNewFile(); // empty file to mark the attempt
+        marker.createNewFile();
 
-        // Forward to result page
-        session.setAttribute("mcqList", mcqList);
+        // Send score to the dedicated score.jsp
+        session.setAttribute("score", score);
+        session.setAttribute("total", mcqList.size());
         request.getRequestDispatcher("result.jsp").forward(request, response);
     }
 }
+

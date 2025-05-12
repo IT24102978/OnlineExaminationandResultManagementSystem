@@ -2,7 +2,6 @@ package com.example.oop_project;
 
 
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 
 import java.io.IOException;
@@ -21,14 +20,14 @@ public class ShowAvailableExamsServlet extends HttpServlet {
             return;
         }
 
-        String basePath = "C:/Users/VICTUS/Documents/ExamSystem"; // Your base path
+        String basePath = "C:/Users/VICTUS/Documents/ExamSystem";
 
         StudentDataLoader loader = new StudentDataLoader(basePath);
         List<String> subjects = loader.loadEnrolledSubjects(studentId);
         List<ExamEntry> availableExams = loader.getAvailableExams(studentId, subjects);
 
         request.setAttribute("examList", availableExams);
-        request.setAttribute("studentId", studentId); // For passing to JSP
+        request.setAttribute("studentId", studentId);
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 }
