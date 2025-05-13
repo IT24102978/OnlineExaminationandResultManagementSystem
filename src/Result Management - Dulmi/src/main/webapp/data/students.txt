@@ -1,5 +1,24 @@
-001,Anushka Piyumal,anu@gmail.com,123
-002,Dulmi Madubashini,madu@gmail.com,234
-003,Ruwandi,ruwandi@gmail.com,345
-004,Apeksha Sewwandi, sew@gmail.com,456
-005,Loshini Tharindi, loshi@gmail.com,555
+001,Anushka,Piyumal,anu@gmail.com,maths,password
+002,Dulmi,madubashini,madu@gmail.com,maths,password
+003,Ruwandi,test,Ruwandi@gmail.com,maths,password
+004,Apeksha,Sewwandi, sew@gmail.com,maths,password
+005,Kasun,Perera,kasun@gmail.com,science,password
+006,Nimali,Silva,nimali@gmail.com,english,password
+007,Chamara,Rajapakse,chamara@gmail.com,history,password
+008,Gayani,Fernando,gayani@gmail.com,maths,password
+009,Thusitha,Bandara,thusitha@gmail.com,physics,password
+010,Sachini,Kumari,sachini@gmail.com,chemistry,password
+011,Lahiru,Weerasinghe,lahiru@gmail.com,biology,password
+012,Sanduni,Gunawardena,sanduni@gmail.com,IT,password
+013,Pradeep,Wijesinghe,pradeep@gmail.com,commerce,password
+014,Dilini,Samarasinghe,dilini@gmail.com,accounting,password
+015,Tharindu,Jayawardena,tharindu@gmail.com,economics,password
+016,Manel,Perera,manel@gmail.com,geography,password
+017,Suraj,Silva,suraj@gmail.com,music,password
+018,Nayana,Rajapakse,nayana@gmail.com,art,password
+019,Isuru,Fernando,isuru@gmail.com,dance,password
+020,Piumi,Bandara,piumi@gmail.com,drama,password
+021,Lakshan,Kumari,lakshan@gmail.com,maths,password
+022,Thushari,Weerasinghe,thushari@gmail.com,science,password
+023,Dhanushka,Gunawardena,dhanushka@gmail.com,english,password
+024,Nilmini,Wijesinghe,nilmini@gmail.com,history,password

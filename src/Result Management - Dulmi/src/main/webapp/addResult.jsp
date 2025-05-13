@@ -213,7 +213,7 @@
                                 if (students != null) {
                                     for (String[] student : students) {
                             %>
-                            <option value="<%= student[0] %>"><%= student[1] %></option>
+                            <option value="<%= student[0] %>"><%= student[1] + " " +student[2] %></option>
                             <%
                                 }
                             } else {
