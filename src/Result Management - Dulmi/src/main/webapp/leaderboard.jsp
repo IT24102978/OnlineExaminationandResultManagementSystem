@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="java.util.*, com.example.msdulmi.leaderboard.StudentResult" %>
+<%@ page import="java.util.*, com.example.result.leaderboard.StudentResult" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>

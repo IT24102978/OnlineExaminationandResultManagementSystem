@@ -1,6 +1,5 @@
-package com.example.msdulmi;
+package com.example.result;
 
-import java.io.*;
 import java.util.*;
 
 import controllers.resultController;
@@ -13,7 +12,6 @@ import jakarta.servlet.http.*;
 //import jakarta.servlet.http.HttpServletRequest;
 //import jakarta.servlet.http.HttpServletResponse;
 
-import java.io.FileWriter;
 import java.io.IOException;
 
 @WebServlet("/submitResultServlet")

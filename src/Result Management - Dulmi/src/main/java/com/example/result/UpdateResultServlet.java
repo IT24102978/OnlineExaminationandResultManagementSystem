@@ -1,7 +1,7 @@
-package com.example.msdulmi;
+package com.example.result;
 
 import java.io.*;
-import java.util.*;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 //import jakarta.servlet.http.HttpServlet;
@@ -9,7 +9,6 @@ import jakarta.servlet.http.*;
 //import jakarta.servlet.http.HttpServletRequest;
 //import jakarta.servlet.http.HttpServletResponse;
 
-import java.io.FileWriter;
 import java.io.IOException;
 
 @WebServlet("/updateResult")
