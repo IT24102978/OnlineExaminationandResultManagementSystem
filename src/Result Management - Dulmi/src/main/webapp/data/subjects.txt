@@ -1,7 +1,11 @@
-Sub1,Physics
-Sub2,Chemistry
-Sub3,Combined maths
-Sub4,Biology
-Sub5,Business studies
-Sub6,Econ
-Sub7,Accounting
+589A,Machine learning
+Sub1,Data Preprocessing
+Sub2,Feature Engineering
+Sub3,Model Selection
+Sub4,Training Algorithms
+Sub5,Evaluation Metrics
+Sub6,Hyperparameter Tuning
+Sub7,Neural Networks
+Sub8,Deep Learning
+Sub9,Natural Language Processing
+Sub10,Computer Vision

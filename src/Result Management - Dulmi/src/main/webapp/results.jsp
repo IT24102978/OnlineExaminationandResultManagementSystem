@@ -2,7 +2,9 @@
 <%@ page import="java.lang.String" %>
 <%
     List<String[]> results = (List<String[]>) request.getAttribute("results");
+
 %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -358,6 +360,11 @@
                 <a href="<%= request.getContextPath() %>/addResult" class="btn btn-success">
                     <i class="fas fa-plus me-2"></i>Add New Result
                 </a>
+
+                <a href="leaderboard" class="ms-2 btn btn-primary" role="button">
+                    <i class="fas fa-trophy me-2"></i>Leaderboard
+                </a>
+
             </div>
         </div>
 
@@ -365,10 +372,13 @@
         <div class="empty-state">
             <i class="fas fa-clipboard-list"></i>
             <p>No student results found.</p>
-            <a href="<%= request.getContextPath() %>/addResult" class="btn btn-success mt-3">
-                <i class="fas fa-plus me-2"></i>Add First Result
-            </a>
+            <div class="d-flex justify-content-center mt-3">
+                <a href="addResult" class="btn btn-success">
+                   Add First Result
+                </a>
+            </div>
         </div>
+
         <% } else { %>
         <div class="table-responsive">
             <table class="table results-table">
