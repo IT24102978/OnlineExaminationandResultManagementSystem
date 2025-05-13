@@ -1,4 +1,4 @@
-package com.example.msdulmi;
+package com.example.result;
 
 import controllers.SelectionSorter;
 import jakarta.servlet.ServletException;

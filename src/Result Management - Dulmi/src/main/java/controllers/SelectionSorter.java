@@ -1,6 +1,6 @@
 package controllers;
 
-import com.example.msdulmi.leaderboard;
+import com.example.result.leaderboard;
 
 import java.util.List;
 

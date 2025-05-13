@@ -1,7 +1,6 @@
-package com.example.msdulmi;
+package com.example.result;
 
 import java.io.*;
-import java.util.*;
 
 import controllers.studentController;
 import controllers.subjectController;
