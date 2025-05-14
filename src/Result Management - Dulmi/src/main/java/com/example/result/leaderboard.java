@@ -1,4 +1,4 @@
-package com.example.result;
+package com.example.msdulmi;
 
 import controllers.SelectionSorter;
 import jakarta.servlet.ServletException;
@@ -40,7 +40,7 @@ public class leaderboard extends HttpServlet {
                     String subject = data[2].trim();
                     int score;
                     try {
-                        score = Integer.parseInt(data[5].trim());
+                        score = Integer.parseInt(data[3].trim());
                     } catch (NumberFormatException e) {
                         score = 0;
                     }
