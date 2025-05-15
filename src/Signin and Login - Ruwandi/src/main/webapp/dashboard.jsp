@@ -110,14 +110,14 @@
         }
 
         a {
-            text-decoration: none;   /* removes underline */
-            font-weight: bold;       /* makes text bold */
-            color: white;          /* dark gray-blue instead of blue */
-            font-family: 'Poppins', sans-serif; /* optional: modern font */
+            text-decoration: none;
+            font-weight: bold;
+            color: white;
+            font-family: 'Poppins', sans-serif;
         }
 
         a:hover {
-            color: #3498db; /* change color on hover (optional) */
+            color: #3498db;
         }
 
         h1 {
@@ -141,8 +141,7 @@
             <li><a href="#">Exams</a></li>
             <li><a href="#">Result</a></li>
             <li><a href="#">Feedbacks</a></li>
-            <li><a href="#">Lecturers</a></li>
-            <li><a href="index.jsp">Log out</a></li>
+            <li><a href="index.jsp"><font color=" red">Log out</font></a></li>
         </ul>
     </div>
 </div>
