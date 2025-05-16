@@ -38,7 +38,8 @@ public class FeedbackServlet extends HttpServlet {
             feedbackList.add(feedback);
         }
 
-        response.sendRedirect("FeedbackServlet"); // redirect to GET to refresh dashboard
+        // Forward to confirmation page
+        request.getRequestDispatcher("feedbackSuccess.jsp").forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

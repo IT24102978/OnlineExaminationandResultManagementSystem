@@ -19,7 +19,7 @@
             font-family: sans-serif;
             margin: 20px;
             background-color: #e0f2f7;
-            background-image: url('images/elevated-view-laptop-stationeries-blue-backdrop.jpg');
+            background-image: url('images/LaptopG.jpg');
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center center;

@@ -10,7 +10,7 @@
         body {
             font-family: sans-serif;
             background-color: #e0f2f7;
-            background-image: url('images/blue-surface-with-study-tools.jpg');
+            background-image: url('images/LaptopB.jpg');
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center center;
