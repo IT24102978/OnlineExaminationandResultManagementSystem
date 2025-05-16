@@ -43,7 +43,7 @@ public class submitResultServlet extends HttpServlet {
         // Get the student name using the ID
 
         studentController scontroller = new studentController();
-        resultController rsController = new resultController();
+        resultController rsController = new resultController(FILE_PATH);
         subjectController scController = new subjectController();
 
         List<String[]> students = scontroller.readStudents(STUDENT_FILE_PATH);
@@ -61,7 +61,7 @@ public class submitResultServlet extends HttpServlet {
 
         // Prepare data to be written to the results file
         String data = studentName + ","  + subjectCode + "," + subName + "," + credits + "," + "," + attempt + "," + grade + "\n";
-        rsController.writeResult(FILE_PATH, data);
+        rsController.writeResult(data);
 
 
         // Redirect to the results page

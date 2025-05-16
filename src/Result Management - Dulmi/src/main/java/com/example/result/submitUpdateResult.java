@@ -66,8 +66,8 @@ public class submitUpdateResult extends HttpServlet {
         String attempt = request.getParameter("attempt");
         String grade = request.getParameter("grade");
 
-        resultController resultController = new resultController();
-        boolean updated = resultController.updateResult(RESULT_FILE_PATH ,studentId, subjectCode, studentName, subject, credits, attempt, grade);
+        resultController resultController = new resultController(RESULT_FILE_PATH);
+        boolean updated = resultController.updateResult( studentId, subjectCode, studentName, subject, credits, attempt, grade);
 
         if (updated) {
             response.sendRedirect(request.getContextPath() + "/result");
