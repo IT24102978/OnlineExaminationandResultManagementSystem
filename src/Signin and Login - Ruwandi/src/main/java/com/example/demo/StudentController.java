@@ -106,7 +106,13 @@ public class StudentController extends HttpServlet {
         HttpSession session = request.getSession();
 
         if ("getStudents".equals(action)) {
-            List<Student> students = studentManager.getAllStudents();
+            Node current = studentManager.getAllStudents();
+            List<Student> students = new java.util.ArrayList<>();
+
+            while (current != null) {
+                students.add(current.data);
+                current = current.next;
+            }
             session.setAttribute("students", students);
 
             // Forward to students.jsp for editing
