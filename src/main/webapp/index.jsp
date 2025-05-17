@@ -19,9 +19,30 @@
             color: #333;
         }
 
+        .header {
+            background-color: #5c3d99;
+            color: white;
+            padding: 15px 40px;
+            font-size: 20px;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer {
+            background-color: #5c3d99;
+            color: white;
+            text-align: center;
+            padding: 12px;
+            font-size: 14px;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+        }
+
         .container {
             max-width: 1000px;
-            margin: 40px auto;
+            margin: 80px auto 60px; /* Adjusted for fixed footer/header */
             padding: 30px 40px;
             background-color: #ffffff;
             border-radius: 12px;
@@ -97,6 +118,11 @@
 </head>
 <body>
 
+<!-- ✅ HEADER -->
+<div class="header">
+    Online Exam System &nbsp; | &nbsp; Available Exams
+</div>
+
 <div class="container">
     <h1><i data-lucide="file-text"></i> Available Exams</h1>
 
@@ -146,6 +172,11 @@
         <% } %>
         </tbody>
     </table>
+</div>
+
+<!-- ✅ FOOTER -->
+<div class="footer">
+    &copy; project_group_198 &nbsp; All rights reserved
 </div>
 
 <script src="https://unpkg.com/lucide@latest"></script>

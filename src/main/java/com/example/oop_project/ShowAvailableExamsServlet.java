@@ -14,7 +14,7 @@ public class ShowAvailableExamsServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String studentId = "stu122";
+        String studentId = "stu122";  //request.getParameter("studentId");
         if (studentId == null || studentId.isEmpty()) {
             response.getWriter().println("Student ID is required.");
             return;

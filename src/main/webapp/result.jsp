@@ -19,9 +19,30 @@
             color: #333;
         }
 
+        .header {
+            background-color: #5c3d99;
+            color: white;
+            padding: 15px 40px;
+            font-size: 20px;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer {
+            background-color: #5c3d99;
+            color: white;
+            text-align: center;
+            padding: 12px;
+            font-size: 14px;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+        }
+
         .container {
             max-width: 800px;
-            margin: 40px auto;
+            margin: 80px auto 60px;
             background-color: #ffffff;
             padding: 30px 40px;
             border-radius: 16px;
@@ -79,6 +100,11 @@
 </head>
 <body>
 
+<!-- ✅ HEADER -->
+<div class="header">
+    Online Exam System &nbsp;
+</div>
+
 <div class="container">
     <h2><i data-lucide="check-circle"></i> Exam Submitted Successfully!</h2>
     <h3>Your Answers:</h3>
@@ -97,6 +123,11 @@
             <i data-lucide="arrow-right-circle"></i> View Your Marks
         </a>
     </div>
+</div>
+
+<!-- ✅ FOOTER -->
+<div class="footer">
+    &copy; project_group_198 &nbsp; All rights reserved
 </div>
 
 <script src="https://unpkg.com/lucide@latest"></script>

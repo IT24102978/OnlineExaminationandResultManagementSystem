@@ -8,11 +8,29 @@
     body {
       font-family: 'Segoe UI', sans-serif;
       background-color: #f8f6ff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
       margin: 0;
+      padding: 0;
+    }
+
+    .header {
+      background-color: #5c3d99;
+      color: white;
+      padding: 15px 40px;
+      font-size: 20px;
+      font-weight: bold;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .footer {
+      background-color: #5c3d99;
+      color: white;
+      text-align: center;
+      padding: 12px;
+      font-size: 14px;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
     }
 
     .score-container {
@@ -21,6 +39,8 @@
       border-radius: 16px;
       box-shadow: 0 10px 20px rgba(100, 0, 200, 0.1);
       text-align: center;
+      max-width: 600px;
+      margin: 100px auto 80px; /* leave space for footer and header */
     }
 
     h2 {
@@ -35,7 +55,7 @@
       margin-bottom: 30px;
     }
 
-    .footer {
+    .footer-note {
       margin-top: 20px;
       color: #777;
     }
@@ -65,17 +85,27 @@
 </head>
 <body>
 
+<!-- ✅ HEADER -->
+<div class="header">
+  Online Exam System &nbsp;
+</div>
+
 <div class="score-container">
   <h2>Your Exam Score</h2>
   <div class="score">
     <%= session.getAttribute("score") %> / <%= session.getAttribute("total") %>
   </div>
-  <div class="footer">
+  <div class="footer-note">
     Thank you for completing your exam!
   </div>
   <a href="${pageContext.request.contextPath}/showExams" class="back-btn">
     <i data-lucide="arrow-left-circle"></i> Back to Exam List
   </a>
+</div>
+
+<!-- ✅ FOOTER -->
+<div class="footer">
+  &copy; project_group_198 &nbsp; All rights reserved
 </div>
 
 <script src="https://unpkg.com/lucide@latest"></script>

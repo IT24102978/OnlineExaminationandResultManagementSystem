@@ -1,4 +1,5 @@
 <%@ page import="java.util.*, com.example.oop_project.MCQ" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%
     ArrayList<MCQ> mcqList = (ArrayList<MCQ>) session.getAttribute("mcqList");
     if (mcqList == null) mcqList = new ArrayList<>();
@@ -20,6 +21,27 @@
             padding: 0;
         }
 
+        .header {
+            background-color: #5c3d99;
+            color: white;
+            padding: 15px 40px;
+            font-size: 20px;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer {
+            background-color: #5c3d99;
+            color: white;
+            text-align: center;
+            padding: 12px;
+            font-size: 14px;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+        }
+
         .main-wrapper {
             display: flex;
             flex-direction: column;
@@ -35,7 +57,7 @@
         }
 
         .container {
-            max-width: 800px;
+            max-width: 1200px;
             width: 100%;
             background-color: #fff;
             padding: 30px 40px;
@@ -47,6 +69,31 @@
             color: #5c3d99;
             text-align: center;
             margin-bottom: 30px;
+        }
+
+        .question-and-map {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        .left-question {
+            flex: 2;
+            min-width: 500px;
+        }
+
+        .right-map {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .section-title {
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 10px;
+            color: #333;
         }
 
         .question-container {
@@ -98,7 +145,6 @@
         }
 
         .question-map {
-            width: 300px;
             display: flex;
             flex-wrap: wrap;
             gap: 12px;
@@ -106,7 +152,6 @@
             background-color: #f0effb;
             padding: 20px;
             border-radius: 16px;
-            margin-top: 30px;
         }
 
         .question-box {
@@ -145,6 +190,11 @@
 </head>
 <body>
 
+<!-- ✅ HEADER -->
+<div class="header">
+    Online Exam System &nbsp;
+</div>
+
 <div class="main-wrapper">
     <div class="timer">
         Time Remaining: <span id="timer">--:--</span>
@@ -154,36 +204,51 @@
         <h2><i data-lucide="book-open"></i> Take Your Exam</h2>
 
         <form action="SubmitExamServlet" method="post" id="examForm" onsubmit="return confirmSubmission();">
-            <div id="questions">
-                <% for (int i = 0; i < mcqList.size(); i++) {
-                    MCQ mcq = mcqList.get(i);
-                %>
-                <div class="question-container <%= (i == 0) ? "active" : "" %>" id="question-<%= i %>">
-                    <p>Q<%= i + 1 %>: <%= mcq.getQuestion() %></p>
-                    <label><input type="radio" name="q<%= i %>" value="A" required> <%= mcq.getOptionA() %></label>
-                    <label><input type="radio" name="q<%= i %>" value="B"> <%= mcq.getOptionB() %></label>
-                    <label><input type="radio" name="q<%= i %>" value="C"> <%= mcq.getOptionC() %></label>
-                    <label><input type="radio" name="q<%= i %>" value="D"> <%= mcq.getOptionD() %></label>
+            <div class="question-and-map">
+                <!-- Question Section -->
+                <div class="left-question">
+                    <div class="section-title">Question</div>
+                    <div id="questions">
+                        <% for (int i = 0; i < mcqList.size(); i++) {
+                            MCQ mcq = mcqList.get(i);
+                        %>
+                        <div class="question-container <%= (i == 0) ? "active" : "" %>" id="question-<%= i %>">
+                            <p>Q<%= i + 1 %>: <%= mcq.getQuestion() %></p>
+                            <label><input type="radio" name="q<%= i %>" value="A" required> <%= mcq.getOptionA() %></label>
+                            <label><input type="radio" name="q<%= i %>" value="B"> <%= mcq.getOptionB() %></label>
+                            <label><input type="radio" name="q<%= i %>" value="C"> <%= mcq.getOptionC() %></label>
+                            <label><input type="radio" name="q<%= i %>" value="D"> <%= mcq.getOptionD() %></label>
+                        </div>
+                        <% } %>
+                    </div>
+
+                    <div class="navigation-buttons">
+                        <button type="button" onclick="prevQuestion()"><i data-lucide="arrow-left"></i> Previous</button>
+                        <button type="button" onclick="nextQuestion()">Next <i data-lucide="arrow-right"></i></button>
+                    </div>
+
+                    <div class="submit-section">
+                        <input type="submit" value="Submit Exam">
+                    </div>
                 </div>
-                <% } %>
-            </div>
 
-            <div class="navigation-buttons">
-                <button type="button" onclick="prevQuestion()"><i data-lucide="arrow-left"></i> Previous</button>
-                <button type="button" onclick="nextQuestion()">Next <i data-lucide="arrow-right"></i></button>
-            </div>
-
-            <div class="submit-section">
-                <input type="submit" value="Submit Exam">
+                <!-- Jump to Question Section -->
+                <div class="right-map">
+                    <div class="section-title">Question navigation</div>
+                    <div class="question-map">
+                        <% for (int i = 0; i < mcqList.size(); i++) { %>
+                        <div class="question-box" id="qbox-<%= i %>" onclick="goToQuestion(<%= i %>)"><%= i + 1 %></div>
+                        <% } %>
+                    </div>
+                </div>
             </div>
         </form>
     </div>
+</div>
 
-    <div class="question-map">
-        <% for (int i = 0; i < mcqList.size(); i++) { %>
-        <div class="question-box" id="qbox-<%= i %>" onclick="goToQuestion(<%= i %>)"><%= i + 1 %></div>
-        <% } %>
-    </div>
+<!-- ✅ FOOTER -->
+<div class="footer">
+    &copy; project_group_198 &nbsp; All rights reserved
 </div>
 
 <script>
