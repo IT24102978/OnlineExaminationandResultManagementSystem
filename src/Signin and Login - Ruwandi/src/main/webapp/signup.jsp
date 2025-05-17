@@ -82,7 +82,7 @@
             </div>
             <button type="submit" class="btn btn-primary w-100">Sign Up</button>
             <div class="text-center mt-3">
-                <p>Already have an account? <a href="login.jsp">Sign In</a></p>
+                <p>Already have an account? <a href="studentLogin.jsp">Sign In</a></p>
             </div>
         </form>
     </div>
