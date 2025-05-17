@@ -40,7 +40,7 @@
                 <div class="text-center">
                     <div class="text-5xl mb-3 animate-bounce"><%= trophy %></div>
                     <h3 class="text-xl font-bold text-gray-900"><%= sr2.name %></h3>
-                    <p class="text-gray-700 mt-2 text-lg font-semibold">Score: <%= sr2.score %></p>
+                    <p class="text-gray-700 mt-2 text-lg font-semibold">Marks: <%= sr2.Marks %></p>
                     <p class="text-sm text-gray-600 mt-1">Rank <%= count + 1 %></p>
                 </div>
             </div>

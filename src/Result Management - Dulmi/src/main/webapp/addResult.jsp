@@ -206,7 +206,7 @@
                         <label for="studentName" class="form-label">
                             <i class="fas fa-user-graduate me-2"></i>Student Name
                         </label>
-                        <select name="studentName" id="studentName" class="form-select" required>
+                        <select name="studentID" id="studentID" class="form-select" required>
                             <option value="">Select Student</option>
                             <%
                                 List<String[]> students = (List<String[]>) request.getAttribute("students");
@@ -251,27 +251,17 @@
                         <i class="fas fa-chevron-down form-icon"></i>
                     </div>
 
-                    <!-- Credits -->
-                    <div class="col-md-4 input-group-icon">
-                        <label for="credits" class="form-label">
-                            <i class="fas fa-star me-2"></i>Credits
+                    <!-- Marks -->
+                    <div class="col-md-6 input-group-icon">
+                        <label for="Marks" class="form-label">
+                            <i class="fas fa-star me-2"></i>Marks
                         </label>
-                        <input type="number" class="form-control" id="credits" name="credits" min="1" required>
-                        <i class="fas fa-hashtag form-icon"></i>
-                    </div>
-
-
-                    <!-- Attempt -->
-                    <div class="col-md-4 input-group-icon">
-                        <label for="attempt" class="form-label">
-                            <i class="fas fa-redo me-2"></i>Attempt
-                        </label>
-                        <input type="number" class="form-control" id="attempt" name="attempt" min="1" required>
+                        <input type="number" class="form-control" id="Marks" name="Marks" min="1" required>
                         <i class="fas fa-hashtag form-icon"></i>
                     </div>
 
                     <!-- Grade -->
-                    <div class="col-md-12 input-group-icon">
+                    <div class="col-md-6 input-group-icon">
                         <label for="grade" class="form-label">
                             <i class="fas fa-award me-2"></i>Grade
                         </label>
@@ -291,7 +281,7 @@
 
                     <!-- Submit Buttons -->
                     <div class="col-12 text-center mt-4">
-                        <a href="<%= request.getContextPath() %>/result" class="btn btn-danger me-3">
+                        <a href="result" class="btn btn-danger me-3">
                             <i class="fas fa-arrow-left me-2"></i>Back
                         </a>
                         <button type="submit" class="btn btn-primary">

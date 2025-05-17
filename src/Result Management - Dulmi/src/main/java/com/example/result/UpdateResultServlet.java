@@ -32,7 +32,7 @@ public class UpdateResultServlet extends HttpServlet {
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(",");
                 // Check if the studentId and subjectCode match
-                if (data.length >= 7 && data[0].equals(studentId) && data[1].equals(subjectCode)) {
+                if (data[0].equals(studentId) && data[1].equals(subjectCode)) {
                     resultData = data;
                     break; // Found the record, no need to continue reading
                 }
@@ -45,14 +45,14 @@ public class UpdateResultServlet extends HttpServlet {
 
         // If the record was found, set attributes and forward to update form
         if (resultData != null) {
-            request.setAttribute("studentId", studentId);
+//            request.setAttribute("studentId", studentId);
             request.setAttribute("subjectCode", subjectCode);
             request.setAttribute("studentName", resultData[0]);
             request.setAttribute("subject", resultData[2]);
-            request.setAttribute("credits", resultData[3]);
-            request.setAttribute("ca", resultData[4]);
-            request.setAttribute("attempt", resultData[5]);
-            request.setAttribute("grade", resultData[6]);
+            request.setAttribute("Marks", resultData[3]);
+
+
+            request.setAttribute("grade", resultData[4]);
 
             // Forward to the update form JSP
             request.getRequestDispatcher("updateResultForm.jsp").forward(request, response);

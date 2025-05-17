@@ -15,16 +15,16 @@ public class leaderboard extends HttpServlet {
         public String name;
         public String subjectCode;
         public String subject;
-        public int score;
+        public int Marks;
 
-        public StudentResult(String name, String subjectCode, String subject, int score) {
+        public StudentResult(String name, String subjectCode, String subject, int Marks) {
             this.name = name;
             this.subjectCode = subjectCode;
             this.subject = subject;
-            this.score = score;
+            this.Marks = Marks;
         }
     }
-
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String filePath = request.getServletContext().getRealPath("data/results.txt");
@@ -34,23 +34,23 @@ public class leaderboard extends HttpServlet {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(",");
-                if (data.length >= 7) {
+                if (data.length >= 2) {
                     String name = data[0].trim();
                     String subjectCode = data[1].trim();
                     String subject = data[2].trim();
-                    int score;
+                    int Marks;
                     try {
-                        score = Integer.parseInt(data[3].trim());
+                        Marks = Integer.parseInt(data[3].trim());
                     } catch (NumberFormatException e) {
-                        score = 0;
+                        Marks = 0;
                     }
-                    StudentResult result = new StudentResult(name, subjectCode, subject, score);
+                    StudentResult result = new StudentResult(name, subjectCode, subject, Marks);
                     allResults.add(result);
                 }
             }
         }
 
-
+        
 
         SelectionSorter.sortByScoreDescending(allResults);
 

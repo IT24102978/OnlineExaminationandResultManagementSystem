@@ -9,7 +9,7 @@ public class SelectionSorter {
         for (int i = 0; i < results.size() - 1; i++) {
             int maxIndex = i;
             for (int j = i + 1; j < results.size(); j++) {
-                if (results.get(j).score > results.get(maxIndex).score) {
+                if (results.get(j).Marks > results.get(maxIndex).Marks) {
                     maxIndex = j;
                 }
             }

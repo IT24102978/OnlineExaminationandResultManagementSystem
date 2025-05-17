@@ -34,8 +34,8 @@ public class resultController {
         return results;
     }
 
-    public boolean updateResult(String studentId, String subjectCode, String studentName,
-                                String subject, String credits, String attempt, String grade) {
+    public boolean updateResult(String subjectCode, String studentName,
+                                String subject, String Marks, String grade) {
 
         List<String> updatedResults = new ArrayList<>();
         boolean recordUpdated = false;
@@ -44,9 +44,9 @@ public class resultController {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(",");
-                if (data.length >= 7 && data[0].equals(studentId) && data[1].equals(subjectCode)) {
+                if (data[0].equals(studentName) && data[1].equals(subjectCode)) {
                     // Rebuild the updated line
-                    line = studentName + "," + subjectCode + "," + subject + "," + credits + "," + "," + attempt + "," + grade;
+                    line = studentName + "," + subjectCode + "," + subject + "," + Marks + "," + grade;
                     recordUpdated = true;
                 }
                 updatedResults.add(line);
