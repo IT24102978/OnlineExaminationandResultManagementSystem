@@ -21,6 +21,7 @@ public class StudentController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
 
+        // Signup to create new student
         if ("signup".equals(action)) {
             String id = request.getParameter("id");
             String firstName = request.getParameter("firstName");
@@ -47,6 +48,8 @@ public class StudentController extends HttpServlet {
             } else {
                 response.sendRedirect("signup.jsp?error=Invalid input");
             }
+
+            // Student login
         } else if ("login".equals(action)) {
             String id = request.getParameter("id");
             String password = request.getParameter("password");
@@ -59,6 +62,8 @@ public class StudentController extends HttpServlet {
             } else {
                 response.sendRedirect("studentLogin.jsp?error=Invalid ID or password");
             }
+
+            // Update student info
         } else if ("update".equals(action)) {
             String id = request.getParameter("id");
             String firstName = request.getParameter("firstName");
@@ -76,6 +81,8 @@ public class StudentController extends HttpServlet {
             } else {
                 response.sendRedirect("editStudent.jsp?id=" + id + "&error=Invalid input");
             }
+
+            // Delete student
         } else if ("delete".equals(action)) {
             String id = request.getParameter("id");
             if (id != null) {
@@ -91,29 +98,26 @@ public class StudentController extends HttpServlet {
         }
     }
 
+    // Handling GET requests
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
         String id = request.getParameter("id");
+        HttpSession session = request.getSession();
 
         if ("getStudents".equals(action)) {
             List<Student> students = studentManager.getAllStudents();
-            request.setAttribute("students", students);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("students.jsp");
-            dispatcher.forward(request, response);
-        } else if ("view".equals(action)) {
-            if (id != null) {
-                Student student = studentManager.searchStudentById(id);
-                request.setAttribute("student", student);
-                RequestDispatcher dispatcher = request.getRequestDispatcher("studentProfile.jsp");
-                dispatcher.forward(request, response);
-            } else {
-                response.sendRedirect("students.jsp?error=Invalid ID");
-            }
+            session.setAttribute("students", students);
+
+            // Forward to students.jsp for editing
+            response.sendRedirect("students.jsp");
+
         } else if ("edit".equals(action)) {
             if (id != null) {
                 Student student = studentManager.searchStudentById(id);
                 request.setAttribute("student", student);
+
+                //Forward to editStudent.jsp for editing
                 RequestDispatcher dispatcher = request.getRequestDispatcher("editStudent.jsp");
                 dispatcher.forward(request, response);
             } else {

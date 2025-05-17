@@ -1,3 +1,7 @@
+//manages student records using a LinkedList
+// loads & stores records in students.txt
+// CRUD operations: Create, Read, Update, Delete
+
 package com.example.demo;
 
 import java.io.*;
@@ -6,6 +10,7 @@ import java.util.*;
 public class StudentManager {
     private LinkedList<Student> students;
 
+// Constructor
     public StudentManager() {
         students = new LinkedList<>();
         loadFromFile();
