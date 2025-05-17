@@ -158,10 +158,10 @@
       <!-- Row 3 -->
       <div class="row mb-4">
         <div class="col-md-3">
-          <label for="credits" class="form-label">Credits:</label>
+          <label for="Marks" class="form-label">Marks:</label>
           <div class="input-group">
             <span class="input-group-text" style="background: rgba(255, 255, 255, 0.2); border: 1px solid rgba(255, 255, 255, 0.3); color: white;"><i class="fas fa-star"></i></span>
-            <input type="number" id="credits" name="credits" class="form-control" value="<%= request.getAttribute("credits") %>" required>
+            <input type="number" id="Marks" name="Marks" class="form-control" value="<%= request.getAttribute("Marks") %>" required>
           </div>
         </div>
 <%--        <div class="col-md-3">--%>
@@ -171,13 +171,7 @@
 <%--            <input type="number" id="ca" name="ca" class="form-control" value="<%= request.getAttribute("ca") %>" required>--%>
 <%--          </div>--%>
 <%--        </div>--%>
-        <div class="col-md-3">
-          <label for="attempt" class="form-label">Attempt:</label>
-          <div class="input-group">
-            <span class="input-group-text" style="background: rgba(255, 255, 255, 0.2); border: 1px solid rgba(255, 255, 255, 0.3); color: white;"><i class="fas fa-redo"></i></span>
-            <input type="number" id="attempt" name="attempt" class="form-control" value="<%= request.getAttribute("attempt") %>" required>
-          </div>
-        </div>
+
         <div class="col-md-3">
           <label for="grade" class="form-label">Grade:</label>
           <div class="input-group">
@@ -196,7 +190,7 @@
         </div>
       </div>
 
-      <input type="hidden" name="studentId" value="<%= request.getAttribute("studentId") %>">
+      <input type="hidden" name="studentName" value="<%= request.getAttribute("studentName") %>">
       <input type="hidden" name="subjectCode" value="<%= request.getAttribute("subjectCode") %>">
 
       <div class="action-buttons">

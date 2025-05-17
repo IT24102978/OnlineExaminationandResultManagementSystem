@@ -32,12 +32,9 @@ public class submitResultServlet extends HttpServlet {
 
 
         // Get form data
-        String studentId = request.getParameter("studentName"); // This is the student ID
+        String studentId = request.getParameter("studentID");
         String subjectCode = request.getParameter("subjectCode");
-//        String subject = request.getParameter("subject");
-        String credits = request.getParameter("credits");
-//        String ca = request.getParameter("ca");
-        String attempt = request.getParameter("attempt");
+        String Marks = request.getParameter("Marks");
         String grade = request.getParameter("grade");
 
         // Get the student name using the ID
@@ -55,17 +52,17 @@ public class submitResultServlet extends HttpServlet {
 
         // Handle if student name is not found
         if (studentName == null) {
-            response.getWriter().println("<p style='color:red;'>Student not found!</p>");
+            response.getWriter().println("<p>Student not found!</p>");
             return;
         }
 
         // Prepare data to be written to the results file
-        String data = studentName + ","  + subjectCode + "," + subName + "," + credits + "," + "," + attempt + "," + grade + "\n";
+        String data = studentName + ","  + subjectCode + "," + subName + "," + Marks + "," + grade + "\n";
         rsController.writeResult(data);
 
 
         // Redirect to the results page
-        response.sendRedirect(request.getContextPath() + "/result");
+        response.sendRedirect("result");
     }
 
     // Method to read students from the file

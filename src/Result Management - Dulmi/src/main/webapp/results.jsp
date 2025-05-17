@@ -387,9 +387,8 @@
                     <th>Student Name</th>
                     <th>Subject Code</th>
                     <th>Subject</th>
-                    <th>Credits</th>
+                    <th>Marks</th>
 
-                    <th>Attempt</th>
                     <th>Grade</th>
                     <th class="text-center">Actions</th>
                 </tr>
@@ -402,10 +401,10 @@
                     <td><%= result[2] %></td>
                     <td><%= result[3] %></td>
 
-                    <td><%= result[5] %></td>
+
                     <td>
                         <%
-                            String grade = result[6];
+                            String grade = result[4];
                             String gradeClass = "";
 
                             if(grade.equals("A+")) {
