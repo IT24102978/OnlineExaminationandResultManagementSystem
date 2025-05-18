@@ -52,7 +52,7 @@ public class SubmitExamServlet extends HttpServlet {
         File marker = new File(submissionMarkerPath + studentId + "_" + examId);
         marker.createNewFile();
 
-        // Send score to the dedicated score.jsp
+
         session.setAttribute("score", score);
         session.setAttribute("total", mcqList.size());
         request.getRequestDispatcher("result.jsp").forward(request, response);
