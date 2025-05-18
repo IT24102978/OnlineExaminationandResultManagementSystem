@@ -19,7 +19,7 @@ public class SubmitExamServlet extends HttpServlet {
 
         HttpSession session = request.getSession();
 
-        // Retrieve exam session data
+
         ArrayList<MCQ> mcqList = (ArrayList<MCQ>) session.getAttribute("mcqList");
         String examId = (String) session.getAttribute("examId");
         String studentId = (String) session.getAttribute("studentId");
@@ -29,20 +29,20 @@ public class SubmitExamServlet extends HttpServlet {
             return;
         }
 
-        // Collect student's selected answers
+
         for (int i = 0; i < mcqList.size(); i++) {
             String answer = request.getParameter("q" + i);
             mcqList.get(i).setUserAnswer(answer);
         }
 
-        // Calculate score using MCQService
+
         MCQService service = new MCQService();
         int score = service.calculateScore(mcqList);
 
-        // Save the score to a file
+
         service.saveUserScore(studentId, examId, score, mcqList.size());
 
-        // Create submission marker file
+
         String submissionMarkerPath = "C:/Users/VICTUS/Documents/ExamSystem/Submissions/";
         File submissionFolder = new File(submissionMarkerPath);
         if (!submissionFolder.exists()) {
