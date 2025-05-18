@@ -1,4 +1,4 @@
-ppackage com.example.demo;
+package com.example.demo;
 
 public class MyLinkedList {
     private Node head;

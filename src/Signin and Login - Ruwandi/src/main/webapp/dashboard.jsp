@@ -205,7 +205,7 @@
 </div>
 
 <div class="container mt-4" id="main-content">
-    <h1 class="text-center title-heading"><b>Student Dashboard</b></h1>
+    <br><br><h1 class="text-center title-heading"><b>Student Dashboard</b></h1><br><br><br>
 
     <div class="row dashboard-cards mt-4">
         <div class="col-md-4">
