@@ -197,7 +197,7 @@
     <ul>
         <li><a href="dashboard.jsp">Dashboard</a></li>
         <li><a href="StudentController?action=getStudents">Students</a></li>
-        <li><a href="#">Exams</a></li>
+        <li><a href="<%= request.getContextPath() %>/showExams?studentId=<%= student.getId() %>">Exams</a></li>
         <li><a href="#">Result</a></li>
         <li><a href="#">Feedbacks</a></li>
         <li><a href="index.jsp" style="color: red;">Log out</a></li>

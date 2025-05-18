@@ -19,7 +19,7 @@ public class Student {
         this.password = password;
     }
 
- // id getter & setter
+    // id getter & setter
     public String getId() {
         return id;
     }
@@ -27,7 +27,7 @@ public class Student {
         this.id = id;
     }
 
-// FirstName getter & setter
+    // FirstName getter & setter
     public String getFirstName() {
         return firstName;
     }
@@ -35,7 +35,7 @@ public class Student {
         this.firstName = firstName;
     }
 
-// LastName getter & setter
+    // LastName getter & setter
     public String getLastName() {
         return lastName;
     }
@@ -43,7 +43,7 @@ public class Student {
         this.lastName = lastName;
     }
 
-//  Email getter & setter
+    //  Email getter & setter
     public String getEmail() {
         return email;
     }
@@ -56,7 +56,7 @@ public class Student {
             System.out.println("Invalid email address");
         }
     }
- // Course getter & setter
+    // Course getter & setter
     public String getCourse() {
         return course;
     }
@@ -64,7 +64,7 @@ public class Student {
         this.course = course;
     }
 
-// Password getter & setter
+    // Password getter & setter
     public String getPassword() {
         return password;
     }
@@ -72,12 +72,12 @@ public class Student {
         this.password = password;
     }
 
- //  Full name method
+    //  Full name method
     public String getFullName() {
         return firstName + " " + lastName;
     }
 
- // builds a single String with student details
+    // builds a single String with student details
     @Override
     public String toString() {
         return id + "," + getFullName() + "," + email + "," + course + "," + password;
