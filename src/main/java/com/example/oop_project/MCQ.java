@@ -7,7 +7,7 @@ public class MCQ {
     private String optionC;
     private String optionD;
     private String userAnswer;
-    private String correctAnswer;  // ✅ New field
+    private String correctAnswer;
 
     public MCQ(String question, String a, String b, String c, String d, String correctAnswer) {
         this.question = question;

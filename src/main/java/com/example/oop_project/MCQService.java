@@ -36,7 +36,7 @@ public class MCQService {
         return list;
     }
 
-    // ✅ Calculate total score
+
     public int calculateScore(ArrayList<MCQ> list) {
         int score = 0;
         for (MCQ mcq : list) {
@@ -48,7 +48,7 @@ public class MCQService {
         return score;
     }
 
-    // ✅ Save only the score to a text file
+
     public void saveUserScore(String studentId, String examId, int score, int total) {
         String folderPath = "C:/Users/VICTUS/Documents/ExamSystem/StudentScores/";
         File folder = new File(folderPath);
