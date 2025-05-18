@@ -1,7 +1,0 @@
-Sub1,Physics
-Sub2,Chemistry
-Sub3,Combined maths
-Sub4,Biology
-Sub5,Business studies
-Sub6,Econ
-Sub7,Accounting
