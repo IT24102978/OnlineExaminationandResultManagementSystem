@@ -7,39 +7,123 @@
     int duration = (session.getAttribute("examDuration") != null)
             ? (int) session.getAttribute("examDuration")
             : 60; // default fallback
+
+    com.example.oop_project.Student student = (com.example.oop_project.Student) session.getAttribute("student");
+    String userFirstName = student != null ? student.getFirstName() : "User";
 %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Take Exam</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
     <style>
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background-color: #f8f6ff;
+        html, body {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+            height: 100%;
+            font-family: 'Segoe UI', sans-serif;
         }
 
-        .header {
-            background-color: #5c3d99;
+        body {
+            padding-top: 50px;
+            overflow-x: hidden;
+            background: url("images/wallpaper.jpg") no-repeat center center fixed;
+            background-size: cover;
+            backdrop-filter: blur(5px);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* ✅ Top Bar */
+        .top-bar {
+            width: 100%;
+            height: 70px;
+            background: black;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
             color: white;
-            padding: 15px 40px;
-            font-size: 20px;
+            font-weight: 600;
+            user-select: none;
+        }
+
+        .menu-btn {
+            font-size: 24px;
+            background: transparent;
+            border: none;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .welcome-msg {
+            font-size: 1.2rem;
+            margin-top: 10px;
+            padding-left: 10px;
+        }
+
+        /* ✅ Sidebar */
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background: #333;
+            position: fixed;
+            top: 70px;
+            left: -250px;
+            transition: left 0.3s ease-in-out;
+            padding-top: 20px;
+            color: white;
+            z-index: 999;
+        }
+
+        .sidebar.active {
+            left: 0;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar ul li {
+            padding: 15px;
+            cursor: pointer;
+            border-bottom: 1px solid #444;
+        }
+
+        .sidebar ul li:hover {
+            background: #555;
+        }
+
+        .sidebar ul li a {
+            text-decoration: none;
             font-weight: bold;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            color: white;
+            font-family: "Poppins", sans-serif;
+        }
+
+        .sidebar ul li a:hover {
+            color: #3498db;
         }
 
         .footer {
-            background-color: #5c3d99;
+            height: 40px;
+            background-color: #3b4a68;
             color: white;
             text-align: center;
-            padding: 12px;
+            line-height: 40px;
             font-size: 14px;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
+            font-family: "Poppins", sans-serif;
+            margin-top: auto;
         }
 
         .main-wrapper {
@@ -52,7 +136,7 @@
         .timer {
             font-size: 22px;
             font-weight: bold;
-            color: #e53935;
+            color: #fff;
             margin-bottom: 20px;
         }
 
@@ -66,7 +150,7 @@
         }
 
         h2 {
-            color: #5c3d99;
+            color: #3b4a68;
             text-align: center;
             margin-bottom: 30px;
         }
@@ -128,7 +212,7 @@
 
         .navigation-buttons button,
         .submit-section input[type="submit"] {
-            background-color: #5c3d99;
+            background-color: #007bff;
             color: white;
             border: none;
             padding: 10px 18px;
@@ -141,7 +225,7 @@
 
         .navigation-buttons button:hover,
         .submit-section input[type="submit"]:hover {
-            background-color: #472f74;
+            background-color: #0056b3;
         }
 
         .question-map {
@@ -172,7 +256,7 @@
         }
 
         .question-box.current {
-            border: 2px solid #5c3d99;
+            border: 2px solid #3b4a68;
         }
 
         .question-box.answered {
@@ -190,11 +274,25 @@
 </head>
 <body>
 
-<!-- ✅ HEADER -->
-<div class="header">
-    Online Exam System &nbsp;
+<!-- ✅ Top Bar -->
+<div class="top-bar">
+    <button class="menu-btn" id="menuBtn">☰</button>
+    <div class="welcome-msg">Welcome,&nbsp;<%= userFirstName %> !</div>
 </div>
 
+<!-- ✅ Sidebar -->
+<div class="sidebar" id="sidebar">
+    <ul>
+        <li><a href="dashboard.jsp">Dashboard</a></li>
+        <li><a href="StudentController?action=getStudents">Students</a></li>
+        <li><a href="<%= request.getContextPath() %>/showExams?studentId=<%= student.getId() %>">Exams</a></li>
+        <li><a href="#">Result</a></li>
+        <li><a href="#">Feedbacks</a></li>
+        <li><a href="showexam.jsp" style="color: red;">Log out</a></li>
+    </ul>
+</div>
+
+<!-- ✅ Main Content -->
 <div class="main-wrapper">
     <div class="timer">
         Time Remaining: <span id="timer">--:--</span>
@@ -205,7 +303,6 @@
 
         <form action="SubmitExamServlet" method="post" id="examForm" onsubmit="return confirmSubmission();">
             <div class="question-and-map">
-                <!-- Question Section -->
                 <div class="left-question">
                     <div class="section-title">Question</div>
                     <div id="questions">
@@ -232,7 +329,6 @@
                     </div>
                 </div>
 
-                <!-- Jump to Question Section -->
                 <div class="right-map">
                     <div class="section-title">Question navigation</div>
                     <div class="question-map">
@@ -246,12 +342,20 @@
     </div>
 </div>
 
-<!-- ✅ FOOTER -->
+<!-- ✅ Footer -->
 <div class="footer">
     &copy; project_group_198 &nbsp; All rights reserved
 </div>
 
+<script src="https://unpkg.com/lucide@latest"></script>
 <script>
+    lucide.createIcons();
+
+    document.getElementById("menuBtn").addEventListener("click", function () {
+        const sidebar = document.getElementById("sidebar");
+        sidebar.classList.toggle("active");
+    });
+
     let currentQuestion = 0;
     const totalQuestions = <%= mcqList.size() %>;
     const examDurationMinutes = <%= duration %>;
@@ -335,9 +439,6 @@
         });
     });
 </script>
-
-<script src="https://unpkg.com/lucide@latest"></script>
-<script>lucide.createIcons();</script>
 
 </body>
 </html>

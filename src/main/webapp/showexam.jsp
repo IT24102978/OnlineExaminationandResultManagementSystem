@@ -1,29 +1,33 @@
-<%@ page import="java.util.*, com.example.oop_project.MCQ, com.example.oop_project.Student" %>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="java.util.*, com.example.oop_project.ExamEntry, com.example.oop_project.Student" %>
 <%
-    ArrayList<MCQ> mcqList = (ArrayList<MCQ>) session.getAttribute("mcqList");
+    List<ExamEntry> examList = (List<ExamEntry>) request.getAttribute("examList");
+    String studentId = (String) request.getAttribute("studentId");
+
     Student student = (Student) session.getAttribute("student");
     String userFirstName = student != null ? student.getFirstName() : "User";
+    int index = 1;
 %>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Exam Submitted</title>
+    <title>Available Exams</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <style>
         html, body {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', sans-serif;
             height: 100%;
         }
 
         body {
             padding-top: 50px;
             overflow-x: hidden;
+            font-family: "Poppins", sans-serif;
             background: url("images/wallpaper.jpg") no-repeat center center fixed;
             background-size: cover;
             backdrop-filter: blur(5px);
@@ -109,65 +113,81 @@
         }
 
         .footer {
+            height: 40px;
             background-color: #3b4a68;
             color: white;
             text-align: center;
-            padding: 12px;
+            line-height: 40px;
             font-size: 14px;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
+            font-family: "Poppins", sans-serif;
+            margin-top: auto;
         }
 
         .container {
-            max-width: 800px;
+            max-width: 1000px;
             margin: 100px auto 60px;
-            background-color: #ffffff;
             padding: 30px 40px;
-            border-radius: 16px;
-            box-shadow: 0 10px 20px rgba(100, 0, 200, 0.08);
-            color: #333;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(128, 0, 255, 0.05);
         }
 
-        h2 {
+        h1 {
             color: #3b4a68;
+            margin-bottom: 30px;
+        }
+
+        .reload-button {
+            text-align: right;
             margin-bottom: 10px;
         }
 
-        h3 {
-            color: #444;
-            margin-bottom: 20px;
+        .reload-button button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s ease;
         }
 
-        .question-block {
-            margin-bottom: 25px;
-            padding-bottom: 15px;
+        .reload-button button:hover {
+            background-color: #0056b3;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th, td {
+            padding: 14px;
+            text-align: center;
             border-bottom: 1px solid #eee;
         }
 
-        .question {
-            font-weight: bold;
-            color: #3f3f3f;
-            margin-bottom: 8px;
-        }
-
-        .answer {
+        th {
+            background-color: #e7ecf4;
             color: #3b4a68;
         }
 
-        .next-btn {
-            display: inline-block;
-            background-color: #007bff;
-            color: white;
-            text-decoration: none;
-            padding: 10px 18px;
-            border-radius: 6px;
-            transition: background 0.2s ease-in-out;
-            margin-top: 20px;
+        tbody tr:hover {
+            background-color: #f0f4f8;
         }
 
-        .next-btn:hover {
+        button.take-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button.take-btn:hover {
             background-color: #0056b3;
         }
 
@@ -201,23 +221,54 @@
 
 <!-- ✅ Main Content -->
 <div class="container">
-    <h2><i data-lucide="check-circle"></i> Exam Submitted Successfully!</h2>
-    <h3>Your Answers:</h3>
+    <h1><i data-lucide="file-text"></i> Available Exams</h1>
 
-    <% for (int i = 0; i < mcqList.size(); i++) {
-        MCQ mcq = mcqList.get(i);
-    %>
-    <div class="question-block">
-        <div class="question">Q<%= i + 1 %>: <%= mcq.getQuestion() %></div>
-        <div class="answer">Your Answer: <%= mcq.getUserAnswer() %></div>
+    <div class="reload-button">
+        <button onclick="location.reload()">
+            <i data-lucide="refresh-cw"></i> Reload
+        </button>
     </div>
-    <% } %>
 
-    <div style="text-align:center;">
-        <a href="score.jsp" class="next-btn">
-            <i data-lucide="arrow-right-circle"></i> View Your Marks
-        </a>
-    </div>
+    <table>
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Exam Name</th>
+            <th>Course</th>
+            <th>Lecturer</th>
+            <th>Number of Questions</th>
+            <th>Date & Time</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% if (examList != null && !examList.isEmpty()) {
+            for (ExamEntry exam : examList) {
+        %>
+        <tr>
+            <td><%= index++ %></td>
+            <td><%= exam.getSubject() %> Exam</td>
+            <td><%= exam.getSubject() %></td>
+            <td><%= exam.getLecturer() %></td>
+            <td><%= exam.getQuestionCount() %></td>
+            <td><%= exam.getDate() %> (<%= exam.getTime() %>)</td>
+            <td>
+                <form action="LoadExamServlet" method="get">
+                    <input type="hidden" name="examId" value="<%= exam.getFileName() %>">
+                    <input type="hidden" name="studentId" value="<%= studentId %>">
+                    <button type="submit" class="take-btn">
+                        <i data-lucide="edit-3"></i> Take Exam
+                    </button>
+                </form>
+            </td>
+        </tr>
+        <% } } else { %>
+        <tr>
+            <td colspan="7" style="text-align: center;">No available exams found.</td>
+        </tr>
+        <% } %>
+        </tbody>
+    </table>
 </div>
 
 <!-- ✅ Footer -->
@@ -229,10 +280,13 @@
 <script>
     lucide.createIcons();
 
+    setInterval(() => location.reload(), 30000);
+
     document.getElementById("menuBtn").addEventListener("click", function () {
         const sidebar = document.getElementById("sidebar");
         sidebar.classList.toggle("active");
     });
 </script>
+
 </body>
 </html>

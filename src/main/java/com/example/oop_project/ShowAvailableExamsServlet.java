@@ -14,7 +14,7 @@ public class ShowAvailableExamsServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String studentId = "stu122";  //request.getParameter("studentId");
+        String studentId = request.getParameter("studentId");
         if (studentId == null || studentId.isEmpty()) {
             response.getWriter().println("Student ID is required.");
             return;
@@ -28,7 +28,7 @@ public class ShowAvailableExamsServlet extends HttpServlet {
 
         request.setAttribute("examList", availableExams);
         request.setAttribute("studentId", studentId);
-        request.getRequestDispatcher("index.jsp").forward(request, response);
+        request.getRequestDispatcher("showexam.jsp").forward(request, response);
     }
 }
 
