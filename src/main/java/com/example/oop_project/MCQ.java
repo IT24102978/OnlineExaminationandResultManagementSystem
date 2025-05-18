@@ -40,10 +40,11 @@ public class MCQ {
         this.userAnswer = userAnswer;
     }
 
-    public String getCorrectAnswer() {   // ✅ New getter
+    public String getCorrectAnswer() {   
         return correctAnswer;
     }
-    public void setCorrectAnswer(String correctAnswer) {  // ✅ Optional setter
+    public void setCorrectAnswer(String correctAnswer) {  
+        
         this.correctAnswer = correctAnswer;
     }
 }
