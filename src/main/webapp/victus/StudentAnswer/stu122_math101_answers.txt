@@ -1,0 +1,30 @@
+Q1: What is not a component in computer?
+Selected Answer: A
+
+Q2: What is not an Asian country?
+Selected Answer: A
+
+Q3: Which one is not a programming language?
+Selected Answer: C
+
+Q4: Which of these is not a fruit?
+Selected Answer: C
+
+Q5: What is not an operating system?
+Selected Answer: C
+
+Q6: Which is not a web browser?
+Selected Answer: C
+
+Q7: Which of these is not a planet?
+Selected Answer: C
+
+Q8: Which one is not a social media platform?
+Selected Answer: C
+
+Q9: What is not used in painting?
+Selected Answer: C
+
+Q10: Which one is not a type of cloud computing service?
+Selected Answer: C
+

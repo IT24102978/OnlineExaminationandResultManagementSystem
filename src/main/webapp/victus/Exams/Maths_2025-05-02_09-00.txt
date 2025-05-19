@@ -1,0 +1,64 @@
+Lecturer: Saduni Perera
+Duration: 45
+QuestionCount: 10
+Q: What is not a component in computer?
+A) processor
+B) ram
+C) tv
+D) storage
+Answer: C
+Q: What is not an Asian country?
+A) China
+B) japan
+C) india
+D) america
+Answer: D
+Q: Which one is not a programming language?
+A) Python
+B) Java
+C) HTML
+D) Dog
+Answer: D
+Q: Which of these is not a fruit?
+A) Apple
+B) Orange
+C) Carrot
+D) Mango
+Answer: C
+Q: What is not an operating system?
+A) Windows
+B) Linux
+C) MacOS
+D) Excel
+Answer: D
+Q: Which is not a web browser?
+A) Chrome
+B) Firefox
+C) Edge
+D) Word
+Answer: D
+Q: Which of these is not a planet?
+A) Mars
+B) Venus
+C) Pluto
+D) Sun
+Answer: D
+Q: Which one is not a social media platform?
+A) Facebook
+B) Twitter
+C) Instagram
+D) Excel
+Answer: D
+Q: What is not used in painting?
+A) Brush
+B) Canvas
+C) Paint
+D) Keyboard
+Answer: D
+Q: Which one is not a type of cloud computing service?
+A) IaaS
+B) PaaS
+C) SaaS
+D) RAM
+Answer: D
+

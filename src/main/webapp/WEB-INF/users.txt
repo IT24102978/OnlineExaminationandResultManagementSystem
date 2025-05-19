@@ -1,0 +1,27 @@
+A001,,,,,123
+A002,,,,,123
+T001,Lalith,Jayathunga,lalijay@gmail.com,English,123
+S001,Anushka,Piyumal,anu@gmail.com,maths,password
+S002,Dulmi,madubashini,madu@gmail.com,maths,password
+S003,Ruwandi,test,Ruwandi@gmail.com,maths,password
+S004,Apeksha,Sewwandi, sew@gmail.com,maths,password
+S005,Kasun,Perera,kasun@gmail.com,science,password
+S006,Nimali,Silva,nimali@gmail.com,english,password
+S007,Chamara,Rajapakse,chamara@gmail.com,history,password
+S008,Gayani,Fernando,gayani@gmail.com,maths,password
+S009,Thusitha,Bandara,thusitha@gmail.com,physics,password
+S010,Sachini,Kumari,sachini@gmail.com,chemistry,password
+S011,Lahiru,Weerasinghe,lahiru@gmail.com,biology,password
+S012,Sanduni,Gunawardena,sanduni@gmail.com,IT,password
+S013,Pradeep,Wijesinghe,pradeep@gmail.com,commerce,password
+S014,Dilini,Samarasinghe,dilini@gmail.com,accounting,password
+S015,Tharindu,Jayawardena,tharindu@gmail.com,economics,password
+S016,Manel,Perera,manel@gmail.com,geography,password
+S017,Suraj,Silva,suraj@gmail.com,music,password
+S018,Nayana,Rajapakse,nayana@gmail.com,art,password
+S019,Isuru,Fernando,isuru@gmail.com,dance,password
+S020,Piumi,Bandara,piumi@gmail.com,drama,password
+S021,Lakshan,Kumari,lakshan@gmail.com,maths,password
+S022,Thushari,Weerasinghe,thushari@gmail.com,science,password
+S023,Dhanushka,Gunawardena,dhanushka@gmail.com,english,password
+S024,Nilmini,Wijesinghe,nilmini@gmail.com,history,password

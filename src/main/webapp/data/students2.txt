@@ -1,0 +1,4 @@
+S001,Kaushani,Dias,kaushi777@gmaile.com,Maths,123
+S002,Chandupa,Perera,chandupa@gmail.com, Maths,345
+S003, Dulmi,Wijesinghe,dulmiw@gmail.com,English,155
+S004,Ruwandi,Dhanodya,ru244@gmail.com,English,918

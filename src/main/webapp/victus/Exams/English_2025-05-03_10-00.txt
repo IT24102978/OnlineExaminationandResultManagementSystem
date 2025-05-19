@@ -1,0 +1,21 @@
+Lecturer: kasun Perera
+Duration: 20
+QuestionCount: 3
+Q: What is the synonym of "happy"?
+A) Sad
+B) Joyful
+C) Angry
+D) Tired
+Answer: B
+Q: Which of the following is a noun?
+A) Run
+B) Beautiful
+C) Happiness
+D) Quickly
+Answer: C
+Q: Choose the correct article: "She adopted ___ dog from the shelter."
+A) an
+B) the
+C) a
+D) no article
+Answer: C

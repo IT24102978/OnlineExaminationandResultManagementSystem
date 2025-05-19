@@ -1,0 +1,9 @@
+Anushka Piyumal,589A,Machine learning,50,A+
+Piumi Bandara,Sub9,Natural Language Processing,84,B
+Gayani Fernando,Sub10,Computer Vision,45,A+
+Suraj Silva,589A,Machine learning,39,C+
+Dhanushka Gunawardena,589A,Machine learning,58,D
+Apeksha Sewwandi,Sub7,Neural Networks,7,D
+Lakshan Kumari,Sub7,Neural Networks,25,D
+Thusitha Bandara,Sub10,Computer Vision,18,A
+Chamara Rajapakse,Sub10,Computer Vision,38,A

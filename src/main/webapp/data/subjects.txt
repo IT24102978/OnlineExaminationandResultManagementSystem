@@ -1,0 +1,11 @@
+589A,Machine learning
+Sub1,Data Preprocessing
+Sub2,Feature Engineering
+Sub3,Model Selection
+Sub4,Training Algorithms
+Sub5,Evaluation Metrics
+Sub6,Hyperparameter Tuning
+Sub7,Neural Networks
+Sub8,Deep Learning
+Sub9,Natural Language Processing
+Sub10,Computer Vision

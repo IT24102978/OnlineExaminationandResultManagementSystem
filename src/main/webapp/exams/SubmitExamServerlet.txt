@@ -1,0 +1,66 @@
+package sign_in_and_exam_management;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.*;
+
+import java.io.*;
+import java.util.ArrayList;
+
+public class SubmitExamServlet extends HttpServlet {
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        HttpSession session = request.getSession();
+
+
+        ArrayList<MCQ> mcqList = (ArrayList<MCQ>) session.getAttribute("mcqList");
+        String examId = (String) session.getAttribute("examId");
+        String studentId = (String) session.getAttribute("studentId");
+
+
+        if (mcqList == null || examId == null || studentId == null) {
+            response.getWriter().println("Session expired or missing data.");
+            return;
+        }
+
+
+        for (int i = 0; i < mcqList.size(); i++) {
+            String answer = request.getParameter("q" + i);
+            mcqList.get(i).setUserAnswer(answer);
+        }
+
+
+        String folderPath = "C:/Users/VICTUS/Documents/ExamSystem/StudentAnswer/";
+        String fileName = studentId + "_" + examId + "_answers";
+        String filePath = folderPath + fileName;
+
+
+        File folder = new File(folderPath);
+        if (!folder.exists()) {
+            folder.mkdirs();
+        }
+
+        // Save answers to file
+        MCQService service = new MCQService();
+        service.saveUserAnswers(mcqList, filePath);
+
+        System.out.println("✅ Answer file saved at: " + filePath);
+
+
+        String submissionMarkerPath = "C:/Users/VICTUS/Documents/ExamSystem/Submissions/";
+        File submissionFolder = new File(submissionMarkerPath);
+        if (!submissionFolder.exists()) {
+            submissionFolder.mkdirs();
+        }
+
+
+        File marker = new File(submissionMarkerPath + studentId + "_" + examId);
+        marker.createNewFile();
+
+
+        session.setAttribute("mcqList", mcqList);
+        request.getRequestDispatcher("result.jsp").forward(request, response);
+    }
+}

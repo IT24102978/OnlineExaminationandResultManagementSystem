@@ -1,3 +1,0 @@
-Name: Dulmi Wijesinghe
-StudentID: S003
-Subjects: English

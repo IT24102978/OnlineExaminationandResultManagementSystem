@@ -1,0 +1,3 @@
+Name: Nandika Lakmali
+StudentID: S001
+Subjects: Maths, English, Science

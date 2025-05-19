@@ -1,0 +1,3 @@
+Name: Chandupa Perera
+StudentID: S002
+Subjects: Maths
