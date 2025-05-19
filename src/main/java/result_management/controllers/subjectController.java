@@ -24,12 +24,12 @@ public class subjectController {
     }
 
 
-    public String subNameById(List<String[]> subjects, String studentId) {
+   public String subNameById(List<String[]> subjects, String SubCode) {
         for (String[] sub : subjects) {
-            if (sub[0].equals(studentId)) { // student[0] is ID
-                return sub[1]; // student[1] is Name
+            if (sub[0].equals(SubCode)) { 
+                return sub[1]; 
             }
         }
-        return null; // Return null if student ID not found
+        return null;
     }
 }
